@@ -49,4 +49,11 @@ function displayAllBooks() {
 
     libraryDiv.append(bookCard);
   }
+
+  addBookToLibrary("There Is No Antimemetics Division", "qntm", 288, false);
+  addBookToLibrary("Infinite Jest", "David Foster Wallace", 1104, false);
+  addBookToLibrary("The Nightingale", "Kristin Hannah", 448, false);
+  addBookToLibrary("Dog Man - A Graphic Novel", "Dav Pilkey", 240, false);
+
+  displayAllBooks();
 }
