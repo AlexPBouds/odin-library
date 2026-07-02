@@ -1,0 +1,105 @@
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background-color: #272757;
+}
+
+.library {
+  display: flex;
+  flex-direction: column;
+  background-color: #505081;
+}
+
+.titleContainer {
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+  align-items: center;
+  width: 100%;
+}
+
+.titleWrapper {
+  flex: 1;
+  text-align: center;
+}
+
+.libraryTitle {
+  display: inline-block;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  margin: 8px 0 0;
+  padding: 0;
+}
+
+.newBookButton {
+  margin: 0 8px;
+  padding: 4px 0;
+  border-radius: 5px;
+}
+
+.libraryContainer {
+  box-sizing: border-box;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 8px;
+  gap: 8px;
+}
+
+.card {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  padding-left: 8px;
+  flex-direction: column;
+  background-color: #8686ac;
+  border-radius: 10px;
+}
+
+.card p {
+  margin: 8px 0 0;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.count {
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 8px;
+}
+
+.popup {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding-left: 8px;
+  gap: 8px;
+}
+
+.popup h2 {
+  margin: 8px 0 0;
+}
+
+.popup button {
+  width: 100px;
+  margin: 0 auto 8px;
+}
+
+.popupSection {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.popupSection p {
+  margin: 0;
+}
+
+.popupSection input {
+  height: 16px;
+}

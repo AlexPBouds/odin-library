@@ -7,7 +7,41 @@
     <title>Odin Library</title>
   </head>
   <body>
-    <div id="library"></div>
+    <div class="library">
+      <div class="titleContainer">
+        <div class="spacer"></div>
+        <p class="libraryTitle">Library</p>
+        <button type="submit" class="newBookButton">New Book</button>
+      </div>
+
+      <div class="popup">
+        <h2>Enter book details:</h2>
+
+        <div class="popupSection">
+          <p>Book Title:</p>
+          <input type="text" id="bookTitle" name="bookTitle" required />
+        </div>
+
+        <div class="popupSection">
+          <p>Author:</p>
+          <input type="text" id="bookAuthor" name="bookAuthor" required />
+        </div>
+
+        <div class="popupSection">
+          <p>Pages:</p>
+          <input type="text" id="bookPages" name="bookPages" required />
+        </div>
+
+        <div class="popupSection">
+          <p>Read:</p>
+          <input type="checkbox" id="bookRead" name="bookRead" />
+        </div>
+
+        <button type="button">Add Book</button>
+      </div>
+
+      <div class="libraryContainer"></div>
+    </div>
 
     <script src="script.js"></script>
   </body>
