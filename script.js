@@ -64,15 +64,29 @@ function displayAllBooks() {
     readButton.onclick = () => changeReadStatus(currentBook.id);
     readContainer.append(readButton);
 
+    const countContainer = document.createElement("div");
+    countContainer.classList.add("countContainer");
+
+    const spacer = document.createElement("div");
+    spacer.classList.add("spacer");
+    countContainer.append(spacer);
+
     const bookCount = document.createElement("p");
     bookCount.innerText = `${i + 1}`;
     bookCount.classList.add("count");
+    countContainer.append(bookCount);
+
+    const removeButton = document.createElement("button");
+    removeButton.innerText = "Remove Book";
+    removeButton.classList.add("removeButton");
+    removeButton.onclick = () => removeBook(currentBook.id);
+    countContainer.append(removeButton);
 
     bookCard.append(bookTitle);
     bookCard.append(bookAuthor);
     bookCard.append(bookPages);
     bookCard.append(readContainer);
-    bookCard.append(bookCount);
+    bookCard.append(countContainer);
 
     libraryDiv.append(bookCard);
   }
@@ -82,6 +96,16 @@ function changeReadStatus(id) {
   const specificBook = library.find(book => book.id == id);
   const readValue = specificBook.read;
   specificBook.read = !readValue;
+
+  displayAllBooks();
+}
+
+function removeBook(id) {
+  const specificBook = library.findIndex(book => book.id == id);
+
+  if (specificBook > -1) {
+    library.splice(specificBook, 1);
+  }
 
   displayAllBooks();
 }
