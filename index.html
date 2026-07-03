@@ -11,33 +11,38 @@
       <div class="titleContainer">
         <div class="spacer"></div>
         <p class="libraryTitle">Library</p>
-        <button type="submit" class="newBookButton">New Book</button>
+        <button type="submit" class="newBookButton" onclick="openPopup()">
+          New Book
+        </button>
       </div>
 
       <div class="popup">
-        <h2>Enter book details:</h2>
+        <h2 id="popupTitle">Enter book details</h2>
 
-        <div class="popupSection">
-          <p>Book Title:</p>
-          <input type="text" id="bookTitle" name="bookTitle" required />
+        <label class="custom-field">
+          <input type="text" id="bookTitle" required />
+          <span class="placeholder">Book Title</span>
+        </label>
+
+        <label class="custom-field">
+          <input type="text" id="bookAuthor" required />
+          <span class="placeholder">Author</span>
+        </label>
+
+        <label class="custom-field">
+          <input type="text" id="bookPages" required />
+          <span class="placeholder">Pages</span>
+        </label>
+
+        <div class="checkboxContainer">
+          <input type="checkbox" id="read" />
+          <label for="read" class="readLabel">Read</label>
         </div>
 
-        <div class="popupSection">
-          <p>Author:</p>
-          <input type="text" id="bookAuthor" name="bookAuthor" required />
+        <div class="buttonContainer">
+          <button type="button" onclick="submitBookData()">Add Book</button>
+          <button type="button" onclick="closePopup()">Close</button>
         </div>
-
-        <div class="popupSection">
-          <p>Pages:</p>
-          <input type="text" id="bookPages" name="bookPages" required />
-        </div>
-
-        <div class="popupSection">
-          <p>Read:</p>
-          <input type="checkbox" id="bookRead" name="bookRead" />
-        </div>
-
-        <button type="button">Add Book</button>
       </div>
 
       <div class="libraryContainer"></div>

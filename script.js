@@ -1,4 +1,11 @@
-const library = [];
+const library = [
+  new Book("There Is No Antimemetics Division", "qntm", 288, false),
+  new Book("Infinite Jest", "David Foster Wallace", 1104, false),
+  new Book("The Nightingale", "Kristin Hannah", 448, false),
+  new Book("Dog Man - A Graphic Novel", "Dav Pilkey", 240, false),
+];
+
+const popup = document.getElementsByClassName("popup")[0];
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -56,9 +63,46 @@ function displayAllBooks() {
   }
 }
 
-addBookToLibrary("There Is No Antimemetics Division", "qntm", 288, false);
-addBookToLibrary("Infinite Jest", "David Foster Wallace", 1104, false);
-addBookToLibrary("The Nightingale", "Kristin Hannah", 448, false);
-addBookToLibrary("Dog Man - A Graphic Novel", "Dav Pilkey", 240, false);
+function openPopup() {
+  popup.classList.add("openPopup");
+}
+
+function closePopup() {
+  popup.classList.remove("openPopup");
+}
+
+function submitBookData() {
+  const popupTitle = document.getElementById("popupTitle");
+
+  const bookTitle = document.querySelector("#bookTitle").value;
+  const bookAuthor = document.querySelector("#bookAuthor").value;
+  const bookPages = document.querySelector("#bookPages").value;
+  const bookRead = document.querySelector("#read").checked;
+
+  if (bookTitle == "") {
+    popupTitle.textContent = "Please add a book title!";
+    return;
+  }
+
+  if (bookAuthor == "") {
+    popupTitle.textContent = "Please add an author!";
+    return;
+  }
+
+  if (bookPages == "") {
+    popupTitle.textContent = "Please add a page count!";
+    return;
+  }
+
+  if (isNaN(bookPages) || !Number.isInteger(Number(bookPages))) {
+    popupTitle.textContent = "Page count must be a valid integer!";
+    return;
+  }
+
+  addBookToLibrary(bookTitle, bookAuthor, Number(bookPages), bookRead);
+  displayAllBooks();
+
+  closePopup();
+}
 
 displayAllBooks();
