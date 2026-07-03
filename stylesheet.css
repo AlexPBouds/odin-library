@@ -51,7 +51,7 @@ body {
   box-sizing: border-box;
   width: 100%;
   display: flex;
-  padding-left: 8px;
+  padding: 0px 8px;
   flex-direction: column;
   background-color: #8686ac;
   border-radius: 10px;
@@ -187,4 +187,10 @@ body {
 .buttonContainer {
   display: flex;
   gap: 16px;
+}
+
+.readContainer {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
 }

@@ -39,16 +39,31 @@ function displayAllBooks() {
     const currentBook = library[i];
     const bookCard = document.createElement("div");
     bookCard.classList.add("card");
+    bookCard.classList.add(`${currentBook.id}`);
 
     const bookTitle = document.createElement("p");
     bookTitle.innerText = `Title: ${currentBook.title}`;
     bookTitle.classList.add("title");
+
     const bookAuthor = document.createElement("p");
     bookAuthor.innerText = `Author: ${currentBook.author}`;
+
     const bookPages = document.createElement("p");
     bookPages.innerText = `Pages: ${currentBook.pages} pages`;
+    
+    const readContainer = document.createElement("div");
+    readContainer.classList.add("readContainer");
+
     const bookRead = document.createElement("p");
     bookRead.innerText = `${currentBook.read ? "Read" : "Not read"}`;
+    readContainer.append(bookRead);
+
+    const readButton = document.createElement("button");
+    readButton.innerText = "Change Read Status";
+    readButton.classList.add("readButton");
+    readButton.onclick = () => changeReadStatus(currentBook.id);
+    readContainer.append(readButton);
+
     const bookCount = document.createElement("p");
     bookCount.innerText = `${i + 1}`;
     bookCount.classList.add("count");
@@ -56,11 +71,19 @@ function displayAllBooks() {
     bookCard.append(bookTitle);
     bookCard.append(bookAuthor);
     bookCard.append(bookPages);
-    bookCard.append(bookRead);
+    bookCard.append(readContainer);
     bookCard.append(bookCount);
 
     libraryDiv.append(bookCard);
   }
+}
+
+function changeReadStatus(id) {
+  const specificBook = library.find(book => book.id == id);
+  const readValue = specificBook.read;
+  specificBook.read = !readValue;
+
+  displayAllBooks();
 }
 
 function openPopup() {
