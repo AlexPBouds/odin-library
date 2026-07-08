@@ -1,3 +1,5 @@
+import { Book } from "./book.js";
+
 const library = [
   new Book("There Is No Antimemetics Division", "qntm", 288, false),
   new Book("Infinite Jest", "David Foster Wallace", 1104, false),
@@ -6,20 +8,6 @@ const library = [
 ];
 
 const popup = document.getElementsByClassName("popup")[0];
-
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.id = crypto.randomUUID();
-
-  this.info = function () {
-    console.log(
-      `${this.title} by ${this.author}, ${this.pages} pages, ${this.read ? "read" : "not read yet"}`,
-    );
-  };
-}
 
 function addBookToLibrary(title, author, pages, read) {
   const newBook = new Book(title, author, pages, read);
@@ -35,7 +23,7 @@ function displayAllBooks() {
   libraryDiv.innerHTML = "";
 
   // Create the book cards, and add them to the library div element
-  for (i = 0; i < libraryLength; i++) {
+  for (let i = 0; i < libraryLength; i++) {
     const currentBook = library[i];
     const bookCard = document.createElement("div");
     bookCard.classList.add("card");
@@ -50,7 +38,7 @@ function displayAllBooks() {
 
     const bookPages = document.createElement("p");
     bookPages.innerText = `Pages: ${currentBook.pages} pages`;
-    
+
     const readContainer = document.createElement("div");
     readContainer.classList.add("readContainer");
 
@@ -93,15 +81,14 @@ function displayAllBooks() {
 }
 
 function changeReadStatus(id) {
-  const specificBook = library.find(book => book.id == id);
-  const readValue = specificBook.read;
-  specificBook.read = !readValue;
+  const specificBook = library.find((book) => book.id == id);
+  specificBook.toggleRead();
 
   displayAllBooks();
 }
 
 function removeBook(id) {
-  const specificBook = library.findIndex(book => book.id == id);
+  const specificBook = library.findIndex((book) => book.id == id);
 
   if (specificBook > -1) {
     library.splice(specificBook, 1);
@@ -153,3 +140,8 @@ function submitBookData() {
 }
 
 displayAllBooks();
+
+// Expose functions used as inline HTML event handlers (e.g. onclick="openPopup()")
+window.openPopup = openPopup;
+window.closePopup = closePopup;
+window.submitBookData = submitBookData;
